@@ -36,7 +36,7 @@ function translate_composition(c)
     return pm.AerosolSpecies(c.label, distribution, kappa = c.κ, bins = c.bins)
 end
 
-function pyrcel(compositions, initial)
+function run(compositions, initial)
     initial_aerosols = map(translate_composition, compositions)
     instance = pm.ParcelModel(
         initial_aerosols,

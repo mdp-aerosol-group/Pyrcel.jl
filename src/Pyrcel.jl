@@ -52,7 +52,7 @@ function run(compositions, initial)
         console = false,
     )
     
-    parcel_trace, aer_out = py"model.run"(
+    parcel_trace, aer_out = instance.run(
         t_end = 300.0 / initial.w,
         output_dt = 1.0 / initial.w,
         solver = "cvode",

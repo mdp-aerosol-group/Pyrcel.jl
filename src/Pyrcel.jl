@@ -29,16 +29,20 @@ struct SizeDistribution
     form::Symbol                  # form of the size distribution [:lognormal, ....]
 end
 
-const pm = pyimport("pyrcel")
+function __init__()
+    py"""
+    import pyrcel as pm
+    """    
+end
 
 function translate_composition(c)
-    distribution = pm.Lognorm(mu = 0.5 * c.μ, sigma = c.σ, N = c.N)
-    return pm.AerosolSpecies(c.label, distribution, kappa = c.κ, bins = c.bins)
+    distribution = py"pm.Lognorm"(mu = 0.5 * c.μ, sigma = c.σ, N = c.N)
+    return py"pm.AerosolSpecies"(c.label, distribution, kappa = c.κ, bins = c.bins)
 end
 
 function run(compositions, initial)
     initial_aerosols = map(translate_composition, compositions)
-    instance = pm.ParcelModel(
+    instance = py"pm.ParcelModel"(
         initial_aerosols,
         initial.w,
         initial.T,
@@ -48,7 +52,7 @@ function run(compositions, initial)
         console = false,
     )
     
-    parcel_trace, aer_out = instance.run(
+    parcel_trace, aer_out = py"model.run"(
         t_end = 300.0 / initial.w,
         output_dt = 1.0 / initial.w,
         solver = "cvode",
@@ -75,7 +79,7 @@ function run(compositions, initial)
     𝕟 = map(i -> SizeDistribution([[]], De[i], Dp[i], ΔlnD[i], S[i], Ni[i], l[i]), e)
 
     Nds = map(1:length(initial_aerosols)) do i
-        eq, kn, alpha, phi = pm.binned_activation(
+        eq, kn, alpha, phi = py"pm.binned_activation"(
             smax / 100,
             Tf,
             traces[i].values[end, :],

@@ -101,7 +101,7 @@ function run(compositions, initial)
         af = af,
         CDNC = CDNC,
         Nds = Nds,
-        𝕟 = 𝕟,
+        psd = 𝕟,
         traces = traces,
         parcel = parcel_trace,
     )

@@ -9,7 +9,7 @@ This package enables running the ```pyrcel``` model within a julia environment.
 At the ```julia>``` prompt, type a ```]``` (close square bracket) to get a Julia package prompt ```pkg>```, where you can type
 
 ```julia
-pkg> add git@github.com:mdp-aerosol-group/Pyrcel.jl.git
+pkg> add https://github.com/mdp-aerosol-group/Pyrcel.jl.git
 ```
 
 to install this package. The required python dependencies for the ```pyrcel``` model will be installed automatically.

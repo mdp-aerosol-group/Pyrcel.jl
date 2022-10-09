@@ -103,7 +103,7 @@ And the following graph
 
 # Detailed Instructions
 
-The ```Model`` structure subsumes the initial conditions
+The ```Model``` structure subsumes the initial conditions
 
 ```julia
 struct Model
@@ -115,7 +115,7 @@ struct Model
 end
 ```
 
-Thus, the following line initializes the model with cloud base temperature and pressure ```T = 298.15 K```, p = ```101300 hPa```, initial saturation ratio of ```S = -0.01``` (99% RH), accomodation coefficient ```α = 1.0```, and updraft velocity ```w = 0.3 m/s".
+Thus, the following line initializes the model with cloud base temperature and pressure ```T = 298.15 K```, p = ```101300 hPa```, initial saturation ratio of ```S = -0.01``` (99% RH), accomodation coefficient ```α = 1.0```, and updraft velocity ```w = 0.3 m/s"```.
 
 ```julia
 julia> initial = Pyrcel.Model(298.15, 1013e2, -0.01, 1.0, 0.3)
